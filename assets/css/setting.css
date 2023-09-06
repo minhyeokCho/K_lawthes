@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+/* ************************************************************************************************************************************************************
+						《 setting.css 》
+************************************************************************************************************************************************************ */
+
+/* ------------------------------ [ Font ] ------------------------------------------------------------------------------------------ */
+
+/* GmarketSans */
+@font-face {
+	font-family: 'GmarketSans';
+	font-weight: 700;
+	font-display: swap;
+	src:local(※),url('../font/GmarketSans_Bold.eot');
+	src:local(※),url('../font/GmarketSans_Bold.eot?#iefix') format("embedded-opentype"),
+		url('../font/GmarketSans_Bold.woff2') format('font-woff2'),
+		url('../font/GmarketSans_Bold.woff') format('woff');
+}
+@font-face {
+	font-family: 'GmarketSans';
+	font-weight: 500;
+	font-display: swap;
+	src:local(※),url('../font/GmarketSans_Medium.eot');
+	src:local(※),url('../font/GmarketSans_Medium.eot?#iefix') format("embedded-opentype"),
+		url('../font/GmarketSans_Medium.woff2') format('font-woff2'),
+		url('../font/GmarketSans_Medium.woff') format('woff');
+}
+@font-face {
+	font-family: 'GmarketSans';
+	font-weight: 300;
+	font-display: swap;
+	src:local(※),url('../font/GmarketSans_Light.eot');
+	src:local(※),url('../font/GmarketSans_Light.eot?#iefix') format("embedded-opentype"),
+		url('../font/GmarketSans_Light.woff2') format('font-woff2'),
+		url('../font/GmarketSans_Light.woff') format('woff');
+}
+
+/* ------------------------------ [ Layout Reset ] ------------------------------------------------------------------------------------------ */
+/* Reset */
+html,body,div,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+abbr,address,big,cite,code,del,dfn,font,figure,figcaption,img,ins,q,s,samp,small,strike,sub,sup,tt,var,
+b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+	color:#000;
+	margin:0;
+	padding:0;
+}
+button,input,textarea {
+	-webkit-text-size-adjust:none;
+	-webkit-appearance:none;
+	-webkit-border-radius:0;
+	border:none;
+	border-radius:0;
+	margin:0;
+	padding:0;
+}
+button {
+	background:none;
+	border:none;
+	color:inherit;
+	cursor:pointer;
+}
+button:disabled {
+	cursor:default;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+	table-layout:fixed;
+	width:100%;
+}
+select {
+	background-color:transparent;
+	border:none;
+	letter-spacing:inherit;
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-webkit-font-smoothing:antialiased;
+	border:none;
+	border-radius:0;
+	margin:0;
+	padding:0;
+}
+select::-ms-expand {
+	display:none; /* 화살표 없애기 for IE10, 11 */
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+}
+ul,li,ol {
+	list-style-type:none;
+}
+hr {
+	display:none;
+}
+legend,caption {
+	overflow:hidden;
+	visibility:hidden;
+	position:absolute;
+	font-size:0;
+	line-height:0;
+	height:0;
+	z-index:-1;
+}
+a,a:active,input:active,button:active,select:active,label:active,
+a:focus,input:focus,button:focus,select:focus,label:focus {
+	text-decoration:none;
+	outline:none;
+}
+a,span,em,strong {
+	color:inherit;
+	font:inherit;
+	border:0;
+	margin:0;
+	padding:0;
+	-webkit-font-smoothing:antialiased;
+}
+a,input,button,select,label {
+	-webkit-tap-highlight-color:transparent;
+}
+::-webkit-input-placeholder {
+	color:#fff;
+	font:inherit;
+	line-height:inherit;
+}
+input:disabled::-webkit-input-placeholder {
+	color:#fff;
+}
+:-moz-placeholder {
+	color:#fff;
+	font:inherit;
+	line-height:inherit;
+}
+input:disabled:-moz-placeholder {
+	color:#fff;
+}
+::-moz-placeholder {
+	color:#fff;
+	font:inherit;
+	line-height:inherit;
+}
+input:disabled::-moz-placeholder {
+	color:#fff;
+}
+:-ms-input-placeholder {
+	color:#fff;
+	font:inherit;
+	line-height:inherit;
+}
+input:disabled:-ms-input-placeholder {
+	color:#fff;
+}
+textarea::placeholder {
+	color:#fff;
+}
+textarea::-webkit-placeholder {
+	color:#fff;
+}
+textarea::-moz-placeholder {
+	color:#fff;
+}
+textarea::-ms-placeholder {
+	color:#fff;
+}
+strong {font-weight:bold;}
+
+.go_view {position:absolute; left:0; top:0; height:100%; width:100%;}
+.blind {overflow:hidden; font-size:0; line-height:0; position:absolute; height:0; width:0;}

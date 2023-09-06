@@ -1,0 +1,358 @@
+@charset "utf-8";
+
+/* ************************************************************************************************************************************************************
+						《 공통 레이아웃 스타일 》
+************************************************************************************************************************************************************ */
+
+/*
+	[z-index 위계]
+	#Mobile Gnb							9999
+	#딤드:class="dim"					999
+	#PC gnb								100
+	#Quick_menu							10
+*/
+
+/* ============================== [ 레이아웃 리셋 Layout Reset ] ========================================================================================== */
+/* Reset */
+html,body,div,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+abbr,address,big,cite,code,del,dfn,font,figure,figcaption,img,ins,q,s,samp,small,strike,sub,sup,tt,var,
+b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {font:20px/1em 'GmarketSans',sans-serif; font-weight:500; word-break:keep-all; word-wrap: break-word;}
+button,input,textarea {font:20px/1em 'GmarketSans',sans-serif; font-weight:500; word-break:keep-all; word-wrap: break-word;}
+select {font:20px/1em 'GmarketSans',sans-serif; font-weight:500;word-break:keep-all; word-wrap: break-word;}
+::selection {color:#fff; background-color:#97755a;}
+
+/* ============================== [ 팝업딤드 ] ========================================================================================== */
+.dim {overflow:hidden; background-color:rgba(0, 0, 0, 0.7); content:""; position:fixed; left:0; top:0; height:100vh; width:100%; z-index:999; opacity:0; visibility:hidden;}
+.dim.on {display: none; opacity:1; visibility:visible;}
+
+/* ============================== [ 공통레이아웃 ] ========================================================================================== */
+.img img {display: block; width: 100%; height: auto; object-fit: cover;}
+
+/* -------------------- #header ---------------------------------------- */
+#header {position: relative;}
+
+/* 로고 */
+#header .logo_area {border-bottom:1px solid rgba(244, 243, 243, .5); box-sizing: border-box; position:relative;}
+#header .logo_area .main_logo {width:275px; height:80px; margin:0 auto; padding: 14px 0;}
+#header .logo_area .main_logo a {display:block; width:100%; height:100%;}
+#header .logo_area .main_logo a img {display:block; width:100%; height:100%;}
+
+/* gnb */
+.gnb_wrap {border-bottom:1px solid #ac8532; transition:background-color .3s; z-index: 100;}
+.gnb_wrap .gnb {width: 1200px; margin:0 auto;}
+.gnb_wrap .gnb ul {display: flex; justify-content: space-between;}
+.gnb_wrap .gnb ul li {position: relative;}
+.gnb_wrap .gnb ul li > a {display:block; font-size:18px; color:#fff; padding:20px 12px 24px; transition:background-color .3s, color .3s; text-decoration:none; position: relative;}
+.gnb_wrap .gnb ul li > a::after {display: block; content:''; height: 2px; background-color: #d6ad55; width:calc(100% - 24px); position: absolute; left: 50%; bottom:15%; transform:translateX(-50%); transition:bottom .3s, opacity .3s; opacity:0; z-index: 1;}
+.gnb_wrap .gnb ul li > a.on {color:#d6ad55;}
+.gnb_wrap .gnb ul li > a.on::after {opacity: 1; bottom: 25%;}
+.gnb_wrap .gnb .dept_02 {position: absolute; left: 0; top: 85px; opacity: 0; visibility: hidden; background-color: #000; width: 140px; transition:visibility .3s,opacity .3s,  top .3s;}
+.gnb_wrap .gnb .dept_02 a {display: inline-block; font-size: 18px; color: #fff; padding: 10px 12px; transition:background-color .2s; width: 100%; box-sizing: border-box;}
+.gnb_wrap .gnb .dept_02 a:hover {background-color: #9d7827;}
+.gnb_wrap .gnb ul li:hover .dept_02 {opacity: 1; visibility: visible; top: 64px;}
+/* gnb고정 */
+.fixed .gnb_wrap {border-color:#000; background-color: #fff; position: fixed; left: 0; top: 0; width: 100%;}
+.fixed .gnb_wrap .gnb ul li > a {color: #000;}
+.fixed .gnb_wrap .gnb ul li > a.on {color:#d6ad55;}
+.fixed .sub {padding-top:65px;} /* gnb높이 추가 */
+.fixed .main_wrap {padding-top: 65px;}
+/* 모바일 GNB 버튼 */
+.gnb_ctrl {display:none; position:absolute; right:20px; top:50%; transform:translateY(-50%); width:30px; height:22px;}
+.gnb_ctrl .line {display:block; width:30px; height:2px; background-color:#edce89; display:block;}
+.gnb_ctrl .line:nth-child(2) {width:20px; margin-left:auto; transition:width .2s;}
+.gnb_ctrl:hover .line:nth-child(2) {width:30px;}
+.gnb_ctrl .line ~ .line {margin-top:8px;}
+
+/* 모바일 GNB영역 */
+.m_gnb_area {display:none; background-color:#fff; width:60%; position:fixed; right:-100%; top:0; overflow-y: auto; height:100vh; transition:right .3s; z-index:9999;}
+.m_gnb_area.on {right:0;}
+.m_gnb_area .cotn {padding:60px 20px 30px;}
+.m_gnb_area .m_gnb_wrap ul li {width:100%; border-bottom:1px solid #ddd;}
+.m_gnb_area .m_gnb_wrap ul li > a {display:block; width:100%; font-size:18px; padding:16px 0 14px; padding-left:8px; box-sizing:border-box; transition:background-color .1s, color .1s; position: relative;}
+.m_gnb_area .m_gnb_wrap ul li > a:hover {background-color:#000; color:#d6ad55;}
+.m_gnb_area .m_gnb_wrap ul li.has_dep > a::after {display: block; content:''; width: 15px; height: 9px; background-image:url(../image/common/icon_arr_down.png); background-repeat: no-repeat; background-size:15px 9px; background-position: 0 0; position: absolute; right: 14px; top:calc(50% - 5px); transition:transform .3s;}
+.m_gnb_area .m_gnb_wrap ul li.has_dep > a:hover::after {background-image:url(../image/common/icon_arr_down_on.png);}
+.m_gnb_area .m_gnb_wrap ul li.has_dep.on > a {background-color:#000; color:#d6ad55;}
+.m_gnb_area .m_gnb_wrap ul li.has_dep.on > a::after {background-image:url(../image/common/icon_arr_down_on.png); transform: rotate(180deg);}
+.m_gnb_area .m_gnb_wrap .depth_02 {display: none; background-color: #a0836e; padding:0 15px;}
+.m_gnb_area .m_gnb_wrap .depth_02 a {display: block; padding:10px 0; font-size: 16px; color:#fff;}
+.m_gnb_area .m_gnb_wrap .depth_02 a ~ a {border-top:1px solid #ddd;}
+.m_gnb_area .cs_sec {margin-top:50px;}
+.m_gnb_area .cs_sec .cs_tit p {color:#666; font-size:14px;}
+.m_gnb_area .cs_sec .cs_tel {margin-top:20px; padding-bottom:16px; border-bottom:1px solid #eee;}
+.m_gnb_area .cs_sec .cs_tel a {font-size:24px;}
+.m_gnb_area .cs_sec .cs_txt {margin-top:20px;}
+.m_gnb_area .cs_sec .cs_txt p {font-size:14px; color:#666; margin-top:10px;}
+.m_gnb_area .m_gnb_close {width:24px; height:24px; position:absolute; right:20px; top:30px; background:url(../image/common/icon_close_bk.svg) no-repeat 0 0; background-size:24px;}
+
+/* -------------------- #footer ---------------------------------------- */
+
+/* 간편상담신청 */
+.cs_wrap {background-color:#674e39; padding:0 20px;}
+.cs_wrap .cotn {max-width:1220px; padding:30px 0; margin:0 auto;}
+.cs_wrap .cs_tit {color: #fff; font-size: 22px;}
+.cs_wrap .form_inner {margin-top: 20px; display: flex; align-items: center; justify-content: space-between;}
+.cs_wrap .form_inner .form_input {background-color: #a0836e; border:1px solid #fffaf6; width: 22%; display: flex; align-items: center; margin-right: 26px;}
+.cs_wrap .form_inner .form_input.inpt_txt {width: 36%;}
+.cs_wrap .form_input label {display: inline-block; padding:15px 0; color: #fff; font-size: 18px; width: 100px; text-align: center;}
+.cs_wrap .form_input input {background-color:#a0836e; font-size: 14px; color: #fff; height: 48px; flex:1;}
+.cs_wrap .form_btn {width: 210px; height: 60px; background-color: #97755a; }
+.cs_wrap .form_btn input {background-color:#a0836e; color: #fff; width: 100%; height: 100%; cursor: pointer;}
+.cs_wrap .form_chk {margin-top: 26px;}
+.cs_wrap .form_chk label {cursor: pointer;}
+.cs_wrap .form_chk label span {color: #fff; font-size: 14px; user-select:none; cursor: pointer;}
+.cs_wrap .form_chk label input {width: 13px; height: 13px; -webkit-appearance: auto; cursor: pointer;}
+.cs_wrap .form_chk a {color:#fff; font-size: 14px;}
+
+/* footer_정보 */
+.foot_wrap {background-color:#2d1707; padding:42px 20px;}
+.foot_wrap .cotn {max-width:640px; margin: 0 auto;}
+.foot_wrap .foot_logo {width: 112px; height: 88px; margin:0 auto;}
+.foot_wrap .foot_link {margin-top: 26px;}
+.foot_wrap .foot_link ul {display: flex; justify-content: center; flex-wrap: wrap; margin-top:-8px;}
+.foot_wrap .foot_link ul li {margin-top: 8px;}
+.foot_wrap .foot_link ul li ~ li {position: relative; margin-left: 16px; padding-left: 16px;}
+.foot_wrap .foot_link ul li ~ li::after {display: block; content:''; width: 2px; height: 20px; background-color: #fff; position: absolute; left: 0; top: -2px;}
+.foot_wrap .foot_link ul li a {font-size: 18px; color: #fff;}
+.foot_wrap address {font-size:13px; margin-top: 26px; color: #fff; text-align: center;}
+.foot_wrap .copy {margin-top: 20px; color:rgba(255, 255, 255, .53); font-size: 13px; text-align: center; line-height: 1.4em;}
+
+/* -------------------- Quick메뉴 ---------------------------------------- */
+.quick_menu {position: fixed; right: 0; top: 50%; transform:translateY(-50%); z-index: 10;}
+.quick_menu ul {display: flex; flex-direction:column;}
+.quick_menu ul li ~ li {border-top:1px solid #fff;}
+.quick_menu ul li a {display: block; width: 80px; height: 76px;}
+.quick_menu ul li a img {display:block; width:100%; height:auto;}
+
+/* 모바일 하단 퀴메뉴 */
+.bottom_quickmenu {
+	display: none;
+	position: fixed;
+	bottom: env(safe-area-inset-bottom);
+	bottom: constant(safe-area-inset-bottom);
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	background: #674E39;
+	border-top: 1px solid rgba(255, 255, 255, .3);
+	z-index: 9 !important;
+}
+.bottom_quickmenu li {
+	float: left;
+	width: 25%;
+	box-sizing:border-box;
+	padding: 15px 0;
+	text-align: center;
+	border-right: 1px solid rgba(255, 255, 255, .1);
+	font-size: 14px;
+	font-weight: 500;
+	color: #fff;
+}
+
+.bottom_quickmenu li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+}
+.bottom_quickmenu li a i {
+	display: block;
+	color: #fff;
+	padding: 3px 0 10px;
+}
+
+
+/* ============================== [ 서브레이아웃 ] ========================================================================================== */
+.sub .content {width:100%; margin:0 auto; box-sizing: border-box;}
+
+/* 임시영역 */
+.sub_tit_area {height: 338px; padding-top: 174px; margin-top: -174px; position: relative; z-index: -1;}
+.sub_tit_area::before {display: block; content:''; width: 100%; height: 100%;background-color: rgba(0, 0, 0, 0.25); position: absolute; left: 0; top: 0;}
+
+/* 서브타이틀영역 */
+.sub_tit_area {width:100%; background-position:center; background-repeat:no-repeat; background-size:cover;}
+.sub_tit_area .tit_wrap {padding:170px 0 0 320px; max-width:1920px; margin:0 auto;}
+.sub_tit_area .sub_tit {font-weight: 300; font-size: 50px; color: #fff; position: relative; z-index: 1;}
+.sub_tit_area .sub_tit::after {display: block; content:''; background:url(../image/sub/tit_logo.png) no-repeat 0 0; background-size: 153px 152px; width: 153px; height: 152px; position: absolute; left: -80px; top: -100px; z-index: -1;}
+.sub_tit_area .txt {font-size: 20px; color: #fff; margin-top: 10px; line-height: 1.3em;}
+.pro .sub_tit_area {background-image:url(../image/sub/bg_pro.jpg);}
+.history .sub_tit_area {background-image:url(../image/sub/bg_history.jpg);}
+.location .sub_tit_area {background-image:url(../image/sub/bg_location.jpg);}
+.review .sub_tit_area{background-image: url(../image/sub/bg_review.jpg);}
+.column .sub_tit_area{background-image: url(../image/sub/bg_column.jpg);}
+.youtube .sub_tit_area {background-image: url(../image/sub/bg_youtube.jpg);}
+.const .sub_tit_area{background-image: url(../image/sub/bg_const.jpg);background-position: center right 25%;}
+.cafe .sub_tit_area{background-image: url(../image/sub/bg_cafe.jpg);}
+.news .sub_tit_area{background-image: url(../image/sub/bg_news.jpg);}
+.dc .sub_tit_area{background-image: url(../image/sub/bg_dc.jpg);}
+
+/* ============================== [ 페이징 ] ========================================================================================== */
+.paging {margin-top: 125px; display: flex; align-items: center; justify-content: center;}
+.paging a {width: 32px; height: 32px; font-size: 22px; line-height: 1.755em; color: #0e0803; text-align: center;}
+.paging a ~ a {margin-left: 10px;}
+.paging a.num ~ a.num {margin-left: 6px;}
+.paging a.num.current {font-weight: 500;}
+.paging .pag_arr {background-color: #fff; border:1px solid #302d2d; box-sizing: border-box; background-position:center center; background-size:32px 32px; background-repeat:no-repeat;}
+.paging .pag_arr.first,
+.paging .pag_arr.last {background-image:url(../image/sub/arr_01.png);}
+.paging .pag_arr.prev,
+.paging .pag_arr.next {background-image:url(../image/sub/arr_02.png);}
+.paging .pag_arr.last,
+.paging .pag_arr.next {transform:rotate(180deg);}
+
+/* ============================== [ 찾아오시는길 ] ========================================================================================== */
+.sub_label {width: 120px; height: 38px; color: #fff; font-size: 24px; line-height: 1.833em; border-radius:25px; display: inline-block; text-align: center; margin: 4px;}
+.sub_label.subway_2 {background-color: #15aa1c;}
+.sub_label.subway_3 {background-color: #ff7415;}
+.bus_list ul {margin:-8px 0 0 -10px; display: flex; flex-wrap: wrap;}
+.bus_label {width: 110px; height: 42px; color: #fff; font-size: 24px; line-height: 1.955em; border-radius:10px; display: inline-block; text-align: center; margin:8px 0 0 10px}
+.bus_label.bl {background-color: #6e8bd3;}
+.bus_label.gr {background-color: #49924e;}
+.bus_label.red {background-color: #e42020;}
+
+/* 지도 박스 */
+.map_box {background-color: #8a7462; padding: 30px 20px; box-sizing: border-box; box-shadow:6px 6px 13px 6px rgba(0, 0, 0, 0.25);}
+.loc_tab_wrap {display: flex;}
+.loc_tab_wrap a {border:3px solid #fff; background-color: #8a7462; font-size: 30px; color: #fff; text-align: center; width: 203px; height: 69px; line-height:2.3em; box-sizing: border-box;}
+.loc_tab_wrap a ~ a {margin-left: 20px;}
+.loc_tab_wrap a.on {border-color:#dfc8b7; background-color:#a4856d;}
+.map_cotn {margin-top: 25px;}
+.map_cotn .group {opacity:0; visibility:hidden;}
+.map_cotn .group .gr_wrap {display: flex;}
+.map_cotn .group.on {opacity:1; visibility:visible;}
+.map_wrap {height: 410px; max-width: 988px; width:55%; overflow: hidden;}
+.root_daum_roughmap .wrap_map {height: 100% !important}
+.map_cotn .map_info {margin-left: 25px; flex:1; padding-top: 10px;}
+.map_cotn .map_info .info_wrap .info_tit {font-size: 40px; font-weight: 700; line-height: 1.1em; color: #fff;}
+.map_cotn .map_info .info_wrap .address {margin-top: 30px; font-size: 24px; font-weight: 300; line-height: 1.143em; color: #fff;}
+.map_cotn .map_info .info_wrap .tel {color: rgba(255, 255, 255, .74); font-size: 32px; line-height: 1.139em; margin-top: 20px;}
+.map_cotn .map_info .trans_wrap {margin-top: 80px;}
+.map_cotn .map_info .trans_tit {color: #fff; font-size: 35px; line-height: 1.149em; font-weight: 700;}
+.map_cotn .map_info .trans_txt {display: flex; align-items: center; margin-top: 25px;}
+.map_cotn .map_info .subway_wrap {flex:1;}
+.map_cotn .map_info .trans_txt .txt {font-size: 20px; color: #fff; font-weight: 300; line-height: 1.136em; margin-left: 15px; flex:1;}
+.map_cotn .root_daum_roughmap .map div {font-size: 14px;}
+.map_cotn .roughmap_maker_label .roughmap_lebel_text {padding: 6px 8px 5px;}
+
+@media only screen and (max-width:1750px){
+	/* ============================== [ 찾아오시는길 ] ========================================================================================== */
+	.map_box {padding:20px;}
+	.map_cotn .map_info {margin-left:32px;}
+	.map_cotn .map_info .trans_wrap {margin-top:60px;}
+	.map_cotn .map_info .info_wrap .info_tit {font-size:38px;}
+	.map_cotn .map_info .info_wrap .address {font-size:22px;}
+	.map_cotn .map_info .info_wrap .tel {font-size:30px;}
+	.map_cotn .map_info .trans_tit {font-size:32px;}
+	.map_cotn .map_info .trans_txt {display:block;}
+	.map_cotn .map_info .trans_txt .txt {margin:20px 0 0 0;}
+}
+
+@media only screen and (max-width:1400px) {
+	/* -------------------- #header ---------------------------------------- */
+	.gnb_wrap .gnb {width: 900px;}
+
+	/* -------------------- #footer ---------------------------------------- */
+
+	/* 간편상담신청 */
+	.cs_wrap .form_inner {flex-wrap: wrap; justify-content: flex-start;}
+	.cs_wrap .form_inner .form_input {width: calc(50% - 102px); margin-right: 0;}
+	.cs_wrap .form_inner .form_input:nth-child(2) {margin-left: 10px;}
+	.cs_wrap .form_inner .form_input.inpt_txt {width: calc(100% - 192px); margin-top:20px;}
+	.cs_wrap .form_btn {margin-left: 10px; margin-top: 20px; width: 179px;}
+
+	/* ============================== [ 서브레이아웃 ] ========================================================================================== */
+	.sub_tit_area .tit_wrap {padding:140px 0 0 150px;}
+}
+
+
+@media only screen and (max-width:1200px) {
+	/* -------------------- #header ---------------------------------------- */
+	#header {position: fixed; left: 0; top: 0; z-index: 999; width: 100%; background-color: #000;}
+	#header .logo_area .main_logo {width: 200px; height: auto;}
+	.gnb_wrap {display: none;}
+	.gnb_ctrl ,
+	.m_gnb_area {display:block;}
+	.dim.on {display: block !important;}
+	.fixed .main_wrap {padding-top: 0;}
+	.quick_menu {display: none;}
+
+	.sub {padding-top: 87px !important;}
+
+	/* ============================== [ 서브레이아웃 ] ========================================================================================== */
+	.sub_tit_area {height: 290px; padding-top: 0; margin-top:0;}
+	.sub_tit_area .tit_wrap {padding:135px 0 0 80px;}
+	.sub_tit_area .sub_tit {font-size: 35px;}
+	.sub_tit_area .sub_tit::after {width: 100px; height: 100px; background-size:100px; left: -40px; top: -60px;}
+	.sub_tit_area .txt {font-size: 18px;}
+
+	/* -------------------- #footer ---------------------------------------- */
+	.foot_wrap {padding-bottom:100px;}
+	/* 간편상담신청 */
+	.cs_wrap .cs_tit {font-size: 20px;}
+	.cs_wrap .form_input label {width:100px;}
+
+	/* -------------------- Quick메뉴 ---------------------------------------- */
+	.quick_menu ul li a {display: block; width: 70px; height: 66px;}
+
+	.bottom_quickmenu {display:block;}
+
+	/* ============================== [ 페이징 ] ========================================================================================== */
+	.paging {margin-top:80px;}
+
+	/* ============================== [ 찾아오시는길 ] ========================================================================================== */
+	.map_cotn .group .gr_wrap {display:block;}
+	.map_wrap {width:100%;}
+	.map_cotn .map_info {margin-left:0; margin-top:50px; padding-top: 0;}
+	.map_cotn .map_info .trans_wrap {margin-top:40px;}
+}
+
+@media only screen and (max-height:700px) {
+	/* -------------------- Quick메뉴 ---------------------------------------- */
+	.quick_menu ul li a {display: block; width: 65px; height: 62px;}
+}
+
+@media only screen and (max-width:767px) {
+
+	/* ============================== [ 서브레이아웃 ] ========================================================================================== */
+	.sub_tit_area {height: 200px;}
+	.sub_tit_area .tit_wrap {padding:80px 20px 0 30px;}
+	.sub_tit_area .sub_tit {font-size: 28px;}
+	.sub_tit_area .sub_tit::after {width: 50px; height: 50px; background-size:50px; left: -20px; top: -20px;}
+	.sub_tit_area .txt {font-size: 14px;}
+
+	/* -------------------- #footer ---------------------------------------- */
+
+	/* 간편상담신청 */
+	.cs_wrap .form_inner .form_input {width: 100%;}
+	.cs_wrap .form_inner .form_input:nth-child(2) {margin-left: 0; margin-top: 20px;}
+	.cs_wrap .form_inner .form_input.inpt_txt {width: 100%;}
+	.cs_wrap .form_btn {width: 100%; margin-left: 0;}
+	/* footer_정보 */
+	.foot_wrap .foot_link ul li a {font-size: 13px;}
+	.foot_wrap .foot_link ul li ~ li::after {height: 14px; top: 2px;}
+
+	/* ============================== [ 페이징 ] ========================================================================================== */
+	.paging {margin-top:40px;}
+	.paging a {font-size:20px; width:24px; height:24px; line-height:1.355em;}
+	.paging a ~ a {margin-left:6px;}
+	.paging a.num ~ a.num {margin-left:2px;}
+	.paging .pag_arr {background-size:24px 24px;}
+
+	/* ============================== [ 찾아오시는길 ] ========================================================================================== */
+	.loc_tab_wrap a {font-size:25px; height:55px;}
+	.loc_tab_wrap a ~ a {margin-left:10px;}
+	.map_cotn .map_info .info_wrap .info_tit {font-size:30px;}
+	.map_cotn .map_info .info_wrap .address {font-size:18px; margin-top:20px;}
+	.map_cotn .map_info .info_wrap .tel {font-size:20px; margin-top:20px;}
+	.map_cotn .map_info .trans_txt .txt {font-size: 18px;}
+	.map_cotn .map_info .trans_tit {font-size:26px;}
+	.map_cotn .map_info .trans_txt {margin-top:20px;}
+	.sub_label {width:120px; height:38px; font-size:24px; margin:6px 6px 0 0;}
+	.sub_label ~ .sub_label {margin-left:0;}
+	.bus_label {font-size:24px; width: 110px; height:42px;}
+}
+
+@media only screen and (max-width:500px) {
+	.m_gnb_area {width:80%;}
+	.gnb_ctrl {right:10px;}
+}
